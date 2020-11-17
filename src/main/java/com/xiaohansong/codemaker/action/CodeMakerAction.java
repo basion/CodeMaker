@@ -111,7 +111,12 @@ public class CodeMakerAction extends AnAction implements DumbAware {
 
     private void saveToFile(AnActionEvent anActionEvent, String language, String className, String content, ClassEntry currentClass, DestinationChooser.FileDestination destination, String encoding) {
         final VirtualFile file = destination.getFile();
-        final String sourcePath = file.getPath() + "/" + currentClass.getPackageName().replace(".", "/");
+        String sourcePath = null;
+        if (file.getPath().endsWith(currentClass.getPackageName().replace(".", "/"))){
+            sourcePath = file.getPath();
+        }else {
+            sourcePath = file.getPath() + "/" + currentClass.getPackageName().replace(".", "/");
+        }
         final String targetPath = CodeMakerUtil.generateClassPath(sourcePath, className, language);
 
         VirtualFileManager manager = VirtualFileManager.getInstance();

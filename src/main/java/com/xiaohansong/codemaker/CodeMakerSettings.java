@@ -35,7 +35,7 @@ public class CodeMakerSettings implements PersistentStateComponent<CodeMakerSett
             codeTemplates.put("Model",
                     createCodeTemplate("Model",
                             "Model.vm",
-                            "#set($end = ${class0.className.length()} - 2)${class0.className.substring(0,${end})}", 1, "java"));
+                            "#set($end = ${class0.className.length()})${class0.className.substring(0,${end})}", 1, "java"));
             codeTemplates.put("Converter",
                     createCodeTemplate("Converter", "Converter.vm", "${class0.className}Converter", 2, "java"));
             codeTemplates.put("Specs2 Matcher",
